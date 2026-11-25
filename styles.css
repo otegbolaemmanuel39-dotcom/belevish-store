@@ -175,3 +175,73 @@ header.top{backdrop-filter:blur(10px);background:color-mix(in srgb,var(--bg) 88%
   .card h3{font-size:17px}
   .row{flex-direction:column;align-items:flex-start;gap:8px}
 }
+
+/* ---- v3: modern header, hero, motion, mobile menu + tab bar ---- */
+body{background:radial-gradient(900px 420px at 88% -4%,color-mix(in srgb,var(--honey) 30%,transparent),transparent),var(--bg)}
+main{overflow-x:clip}
+header.top{transition:box-shadow .3s}
+header.top.scrolled{box-shadow:0 10px 30px rgba(40,20,5,.10)}
+.logo{display:flex;align-items:center;gap:10px}
+.logo b{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),#c0508c);color:#fff;font:700 19px var(--display);transform:rotate(-6deg);transition:transform .3s}
+.logo:hover b{transform:rotate(6deg) scale(1.1)}
+nav a{position:relative}
+nav a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+nav a:hover::after{transform:scaleX(1)}
+.hero{position:relative}
+.eyebrow{display:inline-block;padding:6px 14px;border:1px solid var(--line);border-radius:999px;font-size:13px;font-weight:700;color:var(--accent);background:var(--card);margin-bottom:16px;animation:up .7s both}
+.hero h1{animation:up .8s .1s both}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero p{animation:up .8s .2s both}
+.hero .cta,.hero .ghost{animation:up .8s .3s both}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.herovis{position:relative;display:grid;place-items:center;padding:20px;animation:up 1s .2s both}
+.blob{position:absolute;border-radius:50%;filter:blur(40px);opacity:.55;animation:drift 9s ease-in-out infinite alternate}
+.b1{width:240px;height:240px;background:var(--honey);top:-6px;left:-6px}
+.b2{width:210px;height:210px;background:var(--accent);bottom:0;right:0;animation-delay:-4s}
+@keyframes drift{to{transform:translate(30px,-24px) scale(1.15)}}
+.herovis .hero-ph{position:relative;z-index:1;box-shadow:0 30px 60px rgba(40,20,5,.2)}
+.fl{position:absolute;z-index:2;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;box-shadow:0 10px 24px rgba(40,20,5,.15);animation:float 4s ease-in-out infinite}
+.f1{top:8%;left:0}.f2{top:46%;right:0;animation-delay:-1.3s}.f3{bottom:8%;left:4%;animation-delay:-2.6s}
+@keyframes float{50%{transform:translateY(-10px)}}
+.marquee{overflow:hidden;background:var(--ink);color:var(--bg);padding:12px 0;transform:rotate(-1deg);margin:8px -12px 24px}
+.track{display:flex;width:max-content;animation:scroll 30s linear infinite}
+.track span{padding:0 28px;font:italic 500 20px var(--display);white-space:nowrap}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.sec h2::after,.head h2::after{content:"";display:block;width:48px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--accent),var(--honey));margin-top:10px}
+.rv,.card{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s,box-shadow .3s}
+.rv.in,.card.in{opacity:1;transform:none}
+.card.in:hover{transform:translateY(-5px)}
+.card .pic{overflow:hidden;border-radius:20px 20px 0 0}
+.card .pimg,.card .ph{transition:transform .6s}
+.card:hover .pimg,.card:hover .ph{transform:scale(1.06)}
+.cta,.add{position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.cta::after,.add::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);transition:left .7s}
+.cta:hover::after,.add:hover::after{left:140%}
+.cta:hover,.add:hover{transform:translateY(-2px);box-shadow:0 10px 22px color-mix(in srgb,var(--accent) 40%,transparent)}
+.cta:active,.add:active,.chip:active{transform:scale(.96)}
+.chip{transition:background .2s,color .2s,transform .2s}.chip:hover{transform:translateY(-1px)}
+.bump{animation:bump .45s}
+@keyframes bump{40%{transform:scale(1.45)}}
+.tabbar{display:none}
+.tabcount{position:absolute;top:2px;left:calc(50% + 6px);background:var(--honey);color:#1c1424;border-radius:999px;font-size:11px;padding:0 6px;min-width:18px;text-align:center}
+@media (max-width:760px){
+  header.top{backdrop-filter:none;background:var(--bg)}
+  .acts .cartbtn{display:none}
+  .marquee{margin:4px -12px 8px}
+  .herovis{padding:6px}.b1,.b2{width:160px;height:160px}
+  nav{display:flex;position:fixed;inset:0;height:100dvh;background:var(--bg);flex-direction:column;justify-content:center;gap:6px;padding:80px 32px 120px;border:0;opacity:0;visibility:hidden;transform:translateY(-14px);transition:opacity .3s,transform .3s,visibility .3s;z-index:-1}
+  nav.open{opacity:1;visibility:visible;transform:none}
+  nav a{font:500 34px var(--display);color:var(--ink);padding:8px 0;opacity:0;transform:translateY(18px);transition:opacity .4s,transform .4s}
+  nav a::after{bottom:2px;height:3px;width:44px}
+  nav.open a{opacity:1;transform:none}
+  nav.open a:nth-child(1){transition-delay:.08s}nav.open a:nth-child(2){transition-delay:.14s}nav.open a:nth-child(3){transition-delay:.2s}nav.open a:nth-child(4){transition-delay:.26s}nav.open a:nth-child(5){transition-delay:.32s}
+  body.menuopen{overflow:hidden}
+  .tabbar{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:15;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:22px;padding:6px;box-shadow:0 12px 32px rgba(40,20,5,.2)}
+  .tabbar button,.tabbar a{position:relative;background:none;border:0;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 0;font-size:11px;font-weight:700;color:var(--mute);text-decoration:none;border-radius:16px;transition:background .2s,transform .2s}
+  .tabbar i{font-style:normal;font-size:19px;color:var(--ink)}
+  .tabbar button:active,.tabbar a:active{background:var(--alt);transform:scale(.94)}
+  .wafab{bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+  footer{padding-bottom:100px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important}.rv,.card{opacity:1;transform:none}}

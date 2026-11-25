@@ -1,14 +1,14 @@
 const $=i=>document.getElementById(i);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const money=n=>"$"+Number(n).toFixed(0);
+const money=n=>"₦"+Number(n).toLocaleString("en-NG");
 const WA="2348124958936";
 const wa=t=>"https://wa.me/"+WA+"?text="+encodeURIComponent(t);
 const ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.8"/><path d="m4 18 5-5 4 4 3-3 4 4"/></svg>';
 const SAMPLE=[
- {id:1,name:"Silk Straight",style:"Straight",hair_length:"24 in",price:129,color:"Jet Black",hair_type:"Human hair blend",density:"180%",cap:"Lace front",lifespan:"9–12 months"},
- {id:2,name:"Golden Hour",style:"Wavy",hair_length:"20 in",price:119,color:"Honey Blonde",hair_type:"Human hair blend",density:"180%",cap:"Lace front",lifespan:"9–12 months"},
- {id:3,name:"Coil Crown",style:"Curly",hair_length:"16 in",price:99,color:"Chestnut",hair_type:"Heat-friendly synthetic",density:"150%",cap:"Adjustable",lifespan:"6–9 months"},
- {id:4,name:"The Parisian",style:"Bob",hair_length:"10 in",price:79,color:"Auburn",hair_type:"Heat-friendly synthetic",density:"150%",cap:"Adjustable",lifespan:"6–9 months"}
+ {id:1,name:"Silk Straight",style:"Straight",hair_length:"24 in",price:85000,color:"Jet Black",hair_type:"Human hair blend",density:"180%",cap:"Lace front",lifespan:"9–12 months"},
+ {id:2,name:"Golden Hour",style:"Wavy",hair_length:"20 in",price:75000,color:"Honey Blonde",hair_type:"Human hair blend",density:"180%",cap:"Lace front",lifespan:"9–12 months"},
+ {id:3,name:"Coil Crown",style:"Curly",hair_length:"16 in",price:60000,color:"Chestnut",hair_type:"Heat-friendly synthetic",density:"150%",cap:"Adjustable",lifespan:"6–9 months"},
+ {id:4,name:"The Parisian",style:"Bob",hair_length:"10 in",price:45000,color:"Auburn",hair_type:"Heat-friendly synthetic",density:"150%",cap:"Adjustable",lifespan:"6–9 months"}
 ];
 let PRODUCTS=[],filter="All",cart={};
 try{cart=JSON.parse(localStorage.getItem("bha-cart")||"{}")||{};}catch(e){cart={};}
@@ -31,8 +31,10 @@ function setTheme(t){root.dataset.theme=t;try{localStorage.setItem("theme",t);}c
 $("themeBtn").onclick=()=>setTheme(root.dataset.theme==="dark"?"light":"dark");
 setTheme(root.dataset.theme||"light");
 const nav=document.querySelector("nav");
-$("menuBtn").onclick=()=>nav.classList.toggle("open");
-nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
+function menu(o){nav.classList.toggle("open",o);document.body.classList.toggle("menuopen",o);$("menuBtn").textContent=o?"✕":"☰";}
+$("menuBtn").onclick=()=>menu(!nav.classList.contains("open"));
+nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>menu(false)));
+$("navBook").addEventListener("click",()=>menu(false));
 
 /* Shop */
 function renderFilters(){
@@ -66,7 +68,7 @@ function openP(id){
   $("pmSpecs").innerHTML=rows.map(r=>`<dt>${r[0]}</dt><dd>${esc(r[1])}</dd>`).join("");
   $("pmAdd").disabled=p.in_stock===false;
   $("pmAdd").onclick=()=>{add(p.id);pm.hidden=true;toggle(true);};
-  $("pmWa").href=wa(`Hi Belevish Hair Atelier, I’d like to order the ${p.name} (${p.style}) at ${money(p.price)}.`);
+  $("pmWa").href=wa(`Hi Belevish Hair, I’d like to order the ${p.name} (${p.style}) at ${money(p.price)}.`);
   pm.hidden=false;
 }
 $("pmx").onclick=()=>{pm.hidden=true;};
@@ -85,9 +87,9 @@ function renderCart(){
     const [m,a]=r.querySelectorAll("button");m.onclick=()=>chg(i,-1);a.onclick=()=>chg(i,1);
     $("items").appendChild(r);
   });
-  $("total").textContent=money(total);$("count").textContent=count;
+  $("total").textContent=money(total);$("count").textContent=count;$("count2").textContent=count;$("count2").hidden=!count;[$("count"),$("count2")].forEach(c=>{c.classList.remove("bump");void c.offsetWidth;c.classList.add("bump");});
   const lines=ids.map(i=>cart[i]+" x "+find(i).name).join(", ");
-  $("waCart").href=wa(count?`Hi Belevish Hair Atelier, I’d like to order: ${lines}. Total ${money(total)}`:"Hi Belevish Hair Atelier, I’d like to place an order.");
+  $("waCart").href=wa(count?`Hi Belevish Hair, I’d like to order: ${lines}. Total ${money(total)}`:"Hi Belevish Hair, I’d like to place an order.");
 }
 function toggle(open){document.body.classList.toggle("open",open);$("drawer").setAttribute("aria-hidden",!open);$("msg").textContent="";}
 $("openCart").onclick=()=>toggle(true);$("closeCart").onclick=()=>toggle(false);$("scrim").onclick=()=>toggle(false);
@@ -125,21 +127,30 @@ $("qgo").onclick=()=>{
 /* Booking: saves the request for the seller, then offers WhatsApp */
 const bkm=$("bkm"),bkForm=$("bkForm"),bkDone=$("bkDone");
 function openBk(e){if(e)e.preventDefault();bkForm.hidden=false;bkDone.hidden=true;$("bkDate").min=new Date().toISOString().slice(0,10);bkm.hidden=false;}
-["navBook","heroBook","svcBook"].forEach(i=>$(i).onclick=openBk);
+["navBook","heroBook","svcBook","tbBook"].forEach(i=>$(i).onclick=openBk);
 $("bkx").onclick=()=>{bkm.hidden=true;};
 bkm.onclick=e=>{if(e.target===bkm)bkm.hidden=true;};
 bkForm.onsubmit=async e=>{
   e.preventDefault();
   const f=Object.fromEntries(new FormData(bkForm));
   if(sb)await sb.from("bookings").insert({name:f.name,phone:f.phone,service:f.service,booking_date:f.date,booking_time:f.time,notes:f.notes||null});
-  $("bkWa").href=wa(`Hi Belevish Hair Atelier, I’d like to book: ${f.service} on ${f.date} at ${f.time}. Name: ${f.name}. Phone: ${f.phone}.`+(f.notes?" Notes: "+f.notes:""));
+  $("bkWa").href=wa(`Hi Belevish Hair, I’d like to book: ${f.service} on ${f.date} at ${f.time}. Name: ${f.name}. Phone: ${f.phone}.`+(f.notes?" Notes: "+f.notes:""));
   $("bkMsg").textContent="Thanks, "+f.name.split(" ")[0]+". Tap the button to send your request on WhatsApp. Your slot is confirmed once we reply.";
   bkForm.reset();bkForm.hidden=true;bkDone.hidden=false;
 };
 
 /* Newsletter, WhatsApp, keys */
 $("nl").onsubmit=async e=>{e.preventDefault();const em=e.target.querySelector("input").value;if(sb)await sb.from("subscribers").insert({email:em});$("nlMsg").textContent="Thanks for signing up.";e.target.reset();};
-$("waFab").href=wa("Hi Belevish Hair Atelier, I have a question about your wigs.");$("waContact").href=$("waFab").href;
+$("waFab").href=wa("Hi Belevish Hair, I have a question about your wigs.");$("waContact").href=$("waFab").href;
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){pm.hidden=true;bkm.hidden=true;toggle(false);}});
 
-(async()=>{await load();renderFilters();view();renderCart();})();
+/* Motion: header shadow, scroll reveal, tab bar */
+const hd=document.querySelector("header.top");
+addEventListener("scroll",()=>hd.classList.toggle("scrolled",scrollY>12),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);setTimeout(()=>{e.target.style.transitionDelay="";},1200);}}),{threshold:.1});
+function reveal(){let n=0;document.querySelectorAll(".rv:not(.in),.card:not(.in)").forEach(el=>{el.style.transitionDelay=(n++%4)*80+"ms";io.observe(el);});}
+document.querySelectorAll(".sec h2,.sec .sub,.sec .box,.story .cols>*,.quiz,table,details,.care h2,.care .cols>div,.head").forEach(e=>e.classList.add("rv"));
+new MutationObserver(reveal).observe($("grid"),{childList:true});
+$("tbHome").onclick=()=>scrollTo({top:0,behavior:"smooth"});
+$("tbCart").onclick=()=>toggle(true);
+(async()=>{await load();renderFilters();view();renderCart();reveal();})();
