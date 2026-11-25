@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Belevish Hair Atelier – Wigs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <div class="logo">Belevish Hair Atelier</div>
+    <nav aria-label="Main"><a href="#shop">Shop</a><a href="#quiz">Find my style</a><a href="#story">Our story</a><a href="#sizing">Size guide</a><a href="#faq">FAQ</a><a href="#book" id="navBook">Book installation</a></nav>
+    <div class="acts"><button class="ib" id="themeBtn" aria-label="Toggle dark mode">◐</button><button class="cartbtn" id="openCart" aria-label="Open cart">Cart<span id="count">0</span></button><button class="ib menu" id="menuBtn" aria-label="Menu">☰</button></div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <h1>Wigs that look like your own hair, on your best day.</h1>
+      <p>Pre-plucked hairlines, breathable caps and shades you can try right here. Pick a colour, then find your style.</p>
+      <a class="cta" href="#shop">Shop wigs</a><a class="ghost" href="#book" id="heroBook">Book installation</a>
+    </div>
+    <div class="ph hero-ph" id="heroImg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.8"/><path d="m4 18 5-5 4 4 3-3 4 4"/></svg><span>Your hero photo</span></div>
+  </div>
+
+  <section class="sec" id="quiz"><div class="wrap"><h2>Find my style</h2><p class="sub">Tell us the look and budget. We’ll suggest wigs to try.</p>
+<div class="quiz"><label>Look<select id="qlook"><option value="natural">Natural and sleek</option><option value="flowy">Soft and flowy</option><option value="bold">Big and bold</option><option value="short">Short and easy</option></select></label>
+<label>Budget<select id="qbud"><option value="90">Up to $90</option><option value="130">Up to $130</option><option value="999">Any budget</option></select></label>
+<button class="cta" id="qgo">Show matches</button></div><div class="qres" id="qres"></div></div></section>
+
+  <section class="shop" id="shop">
+    <div class="wrap">
+      <div class="head">
+        <h2>The collection</h2>
+        <div class="filters" id="filters" role="group" aria-label="Filter by style"></div>
+        <div class="tools"><input id="q" type="search" placeholder="Search wigs" aria-label="Search wigs"><select id="sort" aria-label="Sort"><option value="new">Newest</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option></select></div>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="story" id="story">
+    <div class="wrap cols">
+      <h2>We started with one wig and a lot of questions.</h2>
+      <div>
+        <p>Belevish Hair Atelier began when a friend wanted a wig that looked natural, felt light and didn’t cost a month’s pay. We couldn’t find one, so we set out to make it.</p>
+        <p>Every style in our collection is tested on real heads before it’s sold. We check the hairline, the weight of the cap and how the hair holds a curl after a week of wear. If we wouldn’t wear it ourselves, it doesn’t ship.</p>
+        <p>We’re a small team and we answer every message. Tell us what you’re looking for and we’ll help you pick.</p>
+        <div class="facts">
+          <div><b>8</b><span>styles in the collection</span></div>
+          <div><b>30 days</b><span>to return unworn wigs</span></div>
+          <div><b>180°C</b><span>heat-safe styling</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="care" id="care">
+    <div class="wrap">
+      <h2>Made to be worn, and kept</h2>
+      <div class="cols">
+        <div><h3>Adjustable caps</h3><p>Elastic bands and combs fit most head sizes without slipping.</p></div>
+        <div><h3>Heat-friendly fibre</h3><p>Style up to 180°C with a curling iron or flat iron.</p></div>
+        <div><h3>30-day returns</h3><p>Unworn wigs with tags attached can be sent back for a refund.</p></div>
+      </div>
+    </div>
+  </section>
+<section class="sec"><div class="wrap"><h2>What customers say</h2><p class="sub">Sample reviews. Replace them with your own customers’ words and photos.</p>
+<div class="c3"><div class="box"><div class="stars">★★★★★</div><h3>Looks like my own hair</h3><p>The hairline blended in without any fuss. I got compliments all week. – Amaka</p></div>
+<div class="box"><div class="stars">★★★★★</div><h3>Light and comfortable</h3><p>I wore it for a full day and forgot it was on. – Tola</p></div>
+<div class="box"><div class="stars">★★★★☆</div><h3>Fast and friendly</h3><p>They helped me pick a length over chat and delivery was quick. – Bisi</p></div></div></div></section>
+
+<section class="sec alt" id="sizing"><div class="wrap"><h2>Size guide</h2><p class="sub">Measure around your head, from the front hairline, behind the ears and across the nape. Use a soft tape and keep it snug, not tight.</p>
+<table><tr><th>Size</th><th>Head circumference</th></tr><tr><td>Small</td><td>20.5–21.5 in</td></tr><tr><td>Medium</td><td>21.5–22.5 in</td></tr><tr><td>Large</td><td>22.5–23.5 in</td></tr></table>
+<p class="sub" style="margin-top:12px">Between sizes? Pick the larger one and tighten the adjustable band.</p></div></section>
+
+<section class="sec" id="faq"><div class="wrap"><h2>Delivery, returns and questions</h2><p class="sub">Sample details. Update them to match how you really work.</p>
+<div class="c3" style="margin-bottom:24px"><div class="box"><h3>Delivery</h3><p>Orders ship within 2 working days. Delivery takes 2–5 days inside the country.</p></div><div class="box"><h3>Returns</h3><p>Return unworn wigs with tags within 30 days for a refund.</p></div><div class="box"><h3>Services</h3><p>Custom colouring, wig installation and styling by booking.</p><button class="add" id="svcBook" style="margin-top:12px">Book now</button></div></div>
+<details><summary>How do I care for my wig?</summary><p>Wash every 6–8 wears with sulfate-free shampoo, air dry on a stand and detangle from the ends up.</p></details>
+<details><summary>Can I colour or heat style it?</summary><p>Yes, up to 180°C. For colouring, book our custom service so we can match the shade safely.</p></details>
+<details><summary>How long does a wig last?</summary><p>With good care, 6 to 12 months of regular wear.</p></details></div></section>
+
+<section class="sec alt" id="contact"><div class="wrap"><h2>Talk to us</h2><p class="sub">Questions, custom orders or help choosing? Message us.</p>
+<a class="wal" id="waContact" target="_blank" rel="noopener">Chat on WhatsApp</a>
+<form class="nl" id="nl"><input type="email" required placeholder="Your email for new drops" aria-label="Email"><button class="cta" type="submit">Sign up</button></form><p class="msg" id="nlMsg" role="status"></p>
+<p class="sub">Instagram: @belevishhairatelier (placeholder). Email: hello@belevishhairatelier.example</p></div></section>
+</main>
+<footer><div class="wrap">© 2026 Belevish Hair Atelier. Orders are confirmed on WhatsApp.</div></footer>
+
+<div class="modal" id="pm" hidden><div class="mbox" role="dialog" aria-modal="true" aria-label="Wig details"><button class="x" id="pmx" aria-label="Close">×</button><div class="mg"><div id="pmPic"></div><div><h3 id="pmName"></h3><div class="meta" id="pmMeta"></div><div class="price" id="pmPrice"></div><dl class="specs" id="pmSpecs"></dl><div class="mact"><button class="add" id="pmAdd">Add to cart</button><a class="wal" id="pmWa" target="_blank" rel="noopener">Order on WhatsApp</a></div></div></div></div></div>
+<div class="modal" id="bkm" hidden><div class="mbox bk" role="dialog" aria-modal="true" aria-label="Book an installation"><button class="x" id="bkx" aria-label="Close">×</button>
+<form id="bkForm"><h3>Book an installation</h3><p class="note">Choose a service and a time. We’ll confirm your slot on WhatsApp.</p>
+<label>Full name<input name="name" required autocomplete="name"></label>
+<label>Phone number<input name="phone" type="tel" required autocomplete="tel"></label>
+<label>Service<select name="service"><option>Wig installation</option><option>Custom colouring</option><option>Styling and cut</option><option>Wash and revamp</option></select></label>
+<div class="two"><label>Date<input name="date" id="bkDate" type="date" required></label>
+<label>Time<select name="time"><option>10:00 AM</option><option>12:00 PM</option><option>2:00 PM</option><option>4:00 PM</option></select></label></div>
+<label>Notes (optional)<textarea name="notes" rows="3" placeholder="Wig style, colour, anything we should know"></textarea></label>
+<button class="cta" type="submit">Request booking</button></form>
+<div class="bkdone" id="bkDone" hidden><div class="tick" aria-hidden="true">✓</div><h3>Almost done</h3><p class="note" id="bkMsg"></p><a class="wal" id="bkWa" target="_blank" rel="noopener">Send on WhatsApp</a></div></div></div>
+<a class="wafab" id="waFab" target="_blank" rel="noopener">WhatsApp</a>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Cart" aria-hidden="true">
+  <div class="dh"><h2>Your cart</h2><button class="x" id="closeCart" aria-label="Close cart">×</button></div>
+  <div class="items" id="items"></div>
+  <div class="df">
+    <div class="tot"><span>Total</span><span id="total">$0</span></div>
+    <button class="cta" id="checkout">Check out</button>
+    <a class="wa" id="waCart" target="_blank" rel="noopener">Order on WhatsApp</a>
+    <p class="msg" id="msg" role="status"></p>
+  </div>
+  <div class="co" id="co" hidden>
+    <form id="coForm">
+      <h2>Checkout</h2>
+      <p class="note">Demo only. No payment is taken and nothing you type is saved.</p>
+      <label>Full name<input name="name" required autocomplete="name"></label>
+      <label>Email<input name="email" type="email" required autocomplete="email"></label>
+      <label>Delivery address<input name="addr" required autocomplete="street-address"></label>
+      <div class="two">
+        <label>City<input name="city" required autocomplete="address-level2"></label>
+        <label>Postcode<input name="zip" autocomplete="postal-code"></label>
+      </div>
+      <button class="cta" type="submit">Place order · <span id="coTotal">$0</span></button>
+      <p class="msg" id="coErr" role="status"></p><button class="link" type="button" id="coBack">Back to cart</button>
+    </form>
+    <div class="done" id="coDone" hidden>
+      <div class="tick" aria-hidden="true">✓</div>
+      <h2>Order placed</h2>
+      <p class="note" id="coMsg"></p>
+      <button class="cta" type="button" id="coClose">Keep shopping</button>
+    </div>
+  </div>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="supabase.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
